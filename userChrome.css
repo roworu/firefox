@@ -1,0 +1,179 @@
+/* Hide native horizontal tabs (tree style tab in sidebar replaces them) */
+
+#TabsToolbar {
+  visibility: collapse !important;
+}
+
+/* Show nav-bar's own min/max/close buttons, firefox only does this when tabs are hidden natively */
+
+:root[customtitlebar] #navigator-toolbox > #nav-bar > .titlebar-buttonbox-container {
+  display: flex !important;
+}
+
+/* Let empty nav-bar space drag the window */
+
+:root[customtitlebar] #nav-bar {
+  -moz-window-dragging: drag;
+}
+
+/* Hide sidebar panel header (tst/bitwarden title and switcher), firefox 160 renders it in browser.xhtml */
+
+#sidebar-panel-header {
+  display: none !important;
+}
+
+/* Square corners on sidebar and content area */
+
+#sidebar,
+.browserContainer {
+  border-radius: 0 !important;
+}
+
+/* Use toolbar color instead of gtk sidebar color, which is too dark on light themes */
+
+#sidebar-box {
+  --sidebar-background-color: var(--toolbar-background-color);
+  padding: 0 !important;
+}
+
+/* Narrower tst sidebar, firefox's own minimum is 14em; no width here so the splitter's inline width can resize it */
+
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
+  min-width: 120px !important;
+}
+
+/* 1px resize line with a 7px grab area, negative margins keep the extra width off the layout */
+
+.sidebar-splitter {
+  width: 7px !important;
+  border-inline: 3px solid transparent !important;
+  background-clip: padding-box !important;
+  margin-inline: -3px !important;
+  margin-block-end: 0 !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* Square toolbar buttons, urlbar and popups */
+
+:root {
+  --toolbarbutton-border-radius: 0 !important;
+}
+
+.urlbar {
+  --urlbar-border-radius: 0 !important;
+  --urlbarview-border-radius: 0 !important;
+  --urlbar-background-overhang-open: 0px !important;
+}
+
+menupopup,
+panel {
+  --panel-border-radius: 0 !important;
+}
+
+menu,
+menuitem,
+menucaption {
+  border-radius: 0 !important;
+}
+
+/* Hide nav buttons, urlbar extras and the context menu's icon row */
+
+#back-button,
+#forward-button,
+#stop-reload-button,
+#tracking-protection-icon-container,
+#identity-box[pageproxystate="invalid"],
+#star-button-box,
+#reader-mode-button,
+#urlbar-zoom-button,
+#pageActionButton,
+.searchmode-switcher,
+.urlbar-go-button,
+#context-navigation,
+#context-sep-navigation {
+  display: none !important;
+}
+
+/* Slim nav-bar */
+
+#navigator-toolbox {
+  border: none !important;
+}
+
+#nav-bar {
+  --urlbar-height: 22px !important;
+  --urlbar-container-padding-block: 0px !important;
+  height: 28px !important;
+}
+
+/* Urlbar as a flat field, tst.css's --bar color slightly tinted so its edge is clear from the draggable nav-bar */
+
+.urlbar:not([open]) > .urlbar-background {
+  background: color-mix(in srgb, -moz-dialogtext 6%, light-dark(white, color-mix(in srgb, -moz-dialog 85%, white))) !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Square, slim findbar */
+
+findbar {
+  --findbar-container-height: 22px !important;
+  --findbar-padding-block: 0px !important;
+}
+
+.findbar-textbox,
+.findbar-find-previous,
+.findbar-find-next,
+.findbar-closebutton {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Square, slim notification bars, the vars reach into their shadow dom */
+
+notification-message {
+  --message-bar-border-radius: 0 !important;
+  --message-bar-container-min-height: 0 !important;
+  --message-bar-container-padding-block: 1px !important;
+  --button-border-radius: 0 !important;
+}
+
+/* Monospace everywhere, smaller menus */
+
+* {
+  font-family: monospace !important;
+  font-size: 14px !important;
+}
+
+/* Extension badges have to fit on top of their icons */
+
+.toolbarbutton-badge {
+  font-size: 10px !important;
+}
+
+/* No fade on long urls */
+
+.urlbar-input {
+  mask-image: none !important;
+}
+
+menupopup,
+panel,
+menu,
+menuitem {
+  --panel-padding-block: 0px !important;
+  --menuitem-padding-block: 1px !important;
+  --menuitem-padding-inline: 4px !important;
+}
+
+.panel-subview-body {
+  padding: 0 !important;
+}
+
+.subviewbutton,
+.subview-subheader {
+  padding: 1px 4px !important;
+  margin: 0 !important;
+}

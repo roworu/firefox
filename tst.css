@@ -1,0 +1,67 @@
+/* Tree Style Tab user styles, firefox can't load this file itself:
+   TST options > advanced > user style sheet > load from file */
+
+/* Match the firefox toolbar, plain monospace rows */
+
+:root.sidebar {
+  --tab-size: 26px !important;
+  --bar: light-dark(white, color-mix(in srgb, -moz-dialog 85%, white));
+  --tabbar-bg: var(--bar) !important;
+  --tab-surface-regular: var(--bar) !important;
+  --tab-surface-hover: color-mix(in srgb, -moz-dialogtext 8%, var(--bar)) !important;
+  --tab-surface-active: color-mix(in srgb, -moz-dialogtext 16%, var(--bar)) !important;
+  --tab-surface-active-hover: color-mix(in srgb, -moz-dialogtext 16%, var(--bar)) !important;
+  --tab-text-regular: -moz-dialogtext !important;
+  --tab-text-active: -moz-dialogtext !important;
+  --tab-border: transparent !important;
+  font-family: monospace !important;
+  font-size: 14px !important;
+}
+
+#background::after {
+  display: none !important;
+}
+
+tab-item,
+tab-item * {
+  font-family: monospace !important;
+  font-size: 14px !important;
+}
+
+/* No fade on long titles */
+
+tab-item tab-label,
+tab-item .label-content {
+  mask-image: none !important;
+}
+
+tab-item-substance {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Tree line on child tabs, stacks into a step per level */
+
+tab-item-substance[data-parent-id] {
+  border-inline-start: 2px solid color-mix(in srgb, -moz-dialogtext 35%, var(--bar)) !important;
+}
+
+tab-item .background {
+  border: none !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+}
+
+/* New tab button sized like a tab: photon gives it borders and no padding, tabs have padding and no borders */
+
+.after-tabs .newtab-button {
+  border: none !important;
+  box-shadow: none !important;
+  padding-block: var(--tab-vertical-padding) !important;
+}
+
+/* Hide the "open a new tab as..." arrow next to the new tab button */
+
+.newtab-action-selector-anchor {
+  display: none !important;
+}

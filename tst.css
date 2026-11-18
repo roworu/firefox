@@ -20,6 +20,16 @@
   --tab-text-active: -moz-dialogtext !important;
 }
 
+/* macos -moz-dialog is near black in dark mode, firefox's own dark toolbar is blue tinted #2b2a33 */
+:root.platform-mac.sidebar,
+:root.platform-mac.sidebar #background,
+:root.platform-mac.sidebar tab-item-substance,
+:root.platform-mac.sidebar .after-tabs button,
+:root.platform-mac.sidebar .after-tabs [role="button"],
+:root.platform-mac.sidebar #subpanel-selector-anchor {
+  --bar: light-dark(white, #2b2a33);
+}
+
 #background::after {
   display: none !important;
 }

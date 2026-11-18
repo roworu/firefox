@@ -8,10 +8,11 @@ src=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 # scroll distance per wheel step, smoothfox's natural scrolling uses 300 (suggests 250-400)
 scroll_multiplier=200
 
-# every profile listed in a normal or flatpak firefox's profiles.ini
+# every profile listed in a normal, flatpak or macos firefox's profiles.ini
 list_profiles() {
   local root path
-  for root in "$HOME/.mozilla/firefox" \
+  for root in "$HOME/Library/Application Support/Firefox" \
+              "$HOME/.mozilla/firefox" \
               "$HOME/.config/mozilla/firefox" \
               "$HOME/.var/app/org.mozilla.firefox/.mozilla/firefox" \
               "$HOME/.var/app/org.mozilla.firefox/config/mozilla/firefox"; do
@@ -24,7 +25,8 @@ list_profiles() {
 
 profile=${1:-}
 if [[ -z $profile ]]; then
-  mapfile -t profiles < <(list_profiles)
+  profiles=()
+  while IFS= read -r p; do profiles+=("$p"); done < <(list_profiles)
   (( ${#profiles[@]} )) || { echo "no firefox profile found, pass its path as an argument" >&2; exit 1; }
   # tst.css is only ever put there by this script, so it marks an existing install to update
   installed=()

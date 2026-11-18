@@ -1,0 +1,24 @@
+/* New tab and home page in neutral system colors, firefox's own grays are tinted purple (#1c1b22 and the like) */
+
+@-moz-document url("about:newtab"), url("about:home") {
+  :root {
+    --background-color-canvas: Canvas !important;
+    --background-color-box: color-mix(in srgb, CanvasText 6%, Canvas) !important;
+  }
+
+  /* Only the pinned sites, centered on the page: no logo or search box */
+
+  .logo-and-wordmark-wrapper,
+  .logo-and-wordmark,
+  .search-wrapper {
+    display: none !important;
+  }
+
+  main.newtab-main .vertical-center-wrapper {
+    margin: auto 0 !important;
+  }
+
+  .top-sites-list {
+    justify-content: center !important;
+  }
+}

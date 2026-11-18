@@ -1,67 +1,73 @@
-/* Tree Style Tab user styles, firefox can't load this file itself:
-   TST options > advanced > user style sheet > load from file */
+/* Tree Style Tab user styles for its proton theme. firefox can't load this file itself,
+   install.sh hands it to TST through policies.json */
 
-/* Match the firefox toolbar, plain monospace rows */
+/* Tab bar in the firefox toolbar color, active tab a shade darker. proton redefines
+   these on the elements themselves on linux (inverted menu colors), so set them there too or the
+   inherited ones lose */
 
-:root.sidebar {
-  --tab-size: 26px !important;
+:root.sidebar,
+:root.sidebar #background,
+:root.sidebar tab-item-substance,
+:root.sidebar .after-tabs button,
+:root.sidebar .after-tabs [role="button"],
+:root.sidebar #subpanel-selector-anchor {
   --bar: light-dark(white, color-mix(in srgb, -moz-dialog 85%, white));
+  --tab-hover: color-mix(in srgb, -moz-dialogtext 6%, var(--bar));
   --tabbar-bg: var(--bar) !important;
-  --tab-surface-regular: var(--bar) !important;
-  --tab-surface-hover: color-mix(in srgb, -moz-dialogtext 8%, var(--bar)) !important;
-  --tab-surface-active: color-mix(in srgb, -moz-dialogtext 16%, var(--bar)) !important;
-  --tab-surface-active-hover: color-mix(in srgb, -moz-dialogtext 16%, var(--bar)) !important;
+  --tab-surface-active: color-mix(in srgb, -moz-dialogtext 12%, var(--bar)) !important;
+  --tab-border-radius-size: 8px !important;
   --tab-text-regular: -moz-dialogtext !important;
   --tab-text-active: -moz-dialogtext !important;
-  --tab-border: transparent !important;
-  font-family: monospace !important;
-  font-size: 14px !important;
 }
 
 #background::after {
   display: none !important;
 }
 
-tab-item,
-tab-item * {
-  font-family: monospace !important;
-  font-size: 14px !important;
-}
+/* The closebox shows up on hover and would squeeze the sound button */
 
-/* No fade on long titles */
-
-tab-item tab-label,
-tab-item .label-content {
-  mask-image: none !important;
-}
-
-tab-item-substance {
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* Tree line on child tabs, stacks into a step per level */
-
-tab-item-substance[data-parent-id] {
-  border-inline-start: 2px solid color-mix(in srgb, -moz-dialogtext 35%, var(--bar)) !important;
-}
-
-tab-item .background {
-  border: none !important;
-  border-radius: 0 !important;
-  margin: 0 !important;
-}
-
-/* New tab button sized like a tab: photon gives it borders and no padding, tabs have padding and no borders */
-
-.after-tabs .newtab-button {
-  border: none !important;
-  box-shadow: none !important;
-  padding-block: var(--tab-vertical-padding) !important;
+tab-sound-button {
+  flex-shrink: 0 !important;
 }
 
 /* Hide the "open a new tab as..." arrow next to the new tab button */
 
 .newtab-action-selector-anchor {
   display: none !important;
+}
+
+/* Closebox only on hover, proton keeps it on the active tab too */
+
+tab-item-substance.active:not(:hover) tab-closebox {
+  display: none !important;
+}
+
+/* Flat tabs like chrome: no shadow or outline on the active tab, solid hover instead of proton's faint overlay */
+
+tab-item-substance.active .background {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+tab-item-substance:not(.active):hover .background:not(.base) {
+  background: var(--tab-hover) !important;
+  opacity: 1 !important;
+}
+
+/* Chrome's thin close x in a round hover circle */
+
+tab-closebox::before {
+  border-radius: 50% !important;
+}
+
+tab-closebox::after {
+  background: var(--tab-text) !important;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 4.5l7 7m0-7l-7 7' stroke='black' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% !important;
+}
+
+/* Chrome's thin plus on the new tab button */
+
+.newtab-button .label::before {
+  background: var(--tab-text) !important;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 3v10M3 8h10' stroke='black' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% !important;
 }

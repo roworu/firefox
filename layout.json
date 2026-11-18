@@ -1,0 +1,66 @@
+{
+  "placements": {
+    "nav-bar": [
+      "treestyletab_piro_sakura_ne_jp-browser-action",
+      "back-button",
+      "forward-button",
+      "customizableui-special-spring1",
+      "vertical-spacer",
+      "stop-reload-button",
+      "urlbar-container",
+      "customizableui-special-spring2",
+      "downloads-button",
+      "reset-pbm-toolbar-button",
+      "unified-extensions-button"
+    ],
+    "unified-extensions-area": [
+      "ublock0_raymondhill_net-browser-action",
+      "floccus_handmadeideas_org-browser-action",
+      "_446900e4-71c2-419f-a6a7-df9c091e268b_-browser-action",
+      "sponsorblocker_ajay_app-browser-action",
+      "idcac-pub_guus_ninja-browser-action",
+      "_aecec67f-0d10-4fa7-b7c7-609a2db280cf_-browser-action",
+      "plasma-browser-integration_kde_org-browser-action"
+    ],
+    "widget-overflow-fixed-list": [],
+    "toolbar-menubar": [
+      "menubar-items"
+    ],
+    "TabsToolbar": [
+      "tabbrowser-tabs",
+      "new-tab-button",
+      "customizableui-special-spring3",
+      "smartwindow-group-tabs-button",
+      "ai-window-toggle"
+    ],
+    "vertical-tabs": [],
+    "PersonalToolbar": [
+      "personal-bookmarks"
+    ]
+  },
+  "seen": [
+    "treestyletab_piro_sakura_ne_jp-browser-action",
+    "ublock0_raymondhill_net-browser-action",
+    "floccus_handmadeideas_org-browser-action",
+    "_446900e4-71c2-419f-a6a7-df9c091e268b_-browser-action",
+    "sponsorblocker_ajay_app-browser-action",
+    "idcac-pub_guus_ninja-browser-action",
+    "_aecec67f-0d10-4fa7-b7c7-609a2db280cf_-browser-action",
+    "reset-pbm-toolbar-button",
+    "smartwindow-group-tabs-button",
+    "ai-window-toggle",
+    "developer-button",
+    "screenshot-button",
+    "plasma-browser-integration_kde_org-browser-action"
+  ],
+  "dirtyAreaCache": [
+    "nav-bar",
+    "TabsToolbar",
+    "vertical-tabs",
+    "toolbar-menubar",
+    "PersonalToolbar",
+    "unified-extensions-area"
+  ],
+  "currentVersion": 28,
+  "newElementCount": 9
+}

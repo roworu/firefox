@@ -1,0 +1,113 @@
+{
+  "policies": {
+    "PasswordManagerEnabled": false,
+    "OfferToSaveLogins": false,
+    "AutofillAddressEnabled": false,
+    "AutofillCreditCardEnabled": false,
+    "GenerativeAI": {
+      "Enabled": false,
+      "Chatbot": false,
+      "SmartWindow": false,
+      "LinkPreviews": false,
+      "TabGroups": false
+    },
+    "UserMessaging": {
+      "ExtensionRecommendations": false,
+      "FeatureRecommendations": false,
+      "UrlbarInterventions": false,
+      "SkipOnboarding": true,
+      "MoreFromMozilla": false,
+      "FirefoxLabs": false
+    },
+    "FirefoxHome": {
+      "SponsoredTopSites": false,
+      "SponsoredPocket": false,
+      "SponsoredStories": false
+    },
+    "DontCheckDefaultBrowser": true,
+    "NoDefaultBookmarks": true,
+    "DisableTelemetry": true,
+    "DisableFirefoxStudies": true,
+    "DisableFeedbackCommands": true,
+    "DisableFirefoxAccounts": true,
+    "SearchEngines": {
+      "Default": "Google"
+    },
+    "ExtensionSettings": {
+      "treestyletab@piro.sakura.ne.jp": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/tree-style-tab/latest.xpi",
+        "default_area": "menupanel",
+        "private_browsing": true
+      },
+      "{446900e4-71c2-419f-a6a7-df9c091e268b}": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi",
+        "default_area": "menupanel",
+        "private_browsing": true
+      },
+      "floccus@handmadeideas.org": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/floccus/latest.xpi",
+        "default_area": "menupanel"
+      },
+      "uBlock0@raymondhill.net": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi",
+        "default_area": "menupanel",
+        "private_browsing": true
+      },
+      "sponsorBlocker@ajay.app": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi",
+        "default_area": "menupanel"
+      },
+      "{aecec67f-0d10-4fa7-b7c7-609a2db280cf}": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/violentmonkey/latest.xpi",
+        "default_area": "menupanel"
+      },
+      "idcac-pub@guus.ninja": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/istilldontcareaboutcookies/latest.xpi",
+        "default_area": "menupanel"
+      }
+    },
+    "3rdparty": {
+      "Extensions": {
+        "uBlock0@raymondhill.net": {
+          "toOverwrite": {
+            "filterLists": [
+              "user-filters",
+              "ublock-filters",
+              "ublock-badware",
+              "ublock-privacy",
+              "ublock-unbreak",
+              "ublock-quick-fixes",
+              "easylist",
+              "easyprivacy",
+              "urlhaus-1",
+              "plowe-0",
+              "ublock-annoyances",
+              "easylist-annoyances",
+              "fanboy-cookiemonster",
+              "ublock-cookies-easylist"
+            ]
+          }
+        },
+        "treestyletab@piro.sakura.ne.jp": {
+          "style": "proton",
+          "animation": false,
+          "autoCollapseExpandSubtreeOnAttach": false,
+          "autoCollapseExpandSubtreeOnSelect": false,
+          "autoCollapseExpandSubtreeOnSelectExceptActiveTabRemove": false,
+          "unfocusableCollapsedTab": false,
+          "expandNativeTabGroupByMemberTreeExpansion": false,
+          "skipCollapsedTabsForTabSwitchingShortcuts": true,
+          "maxTreeLevel": 3,
+          "insertNewChildAt": 3
+        }
+      }
+    }
+  }
+}

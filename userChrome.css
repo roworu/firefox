@@ -22,11 +22,11 @@
   display: none !important;
 }
 
-/* Square corners on sidebar and content area */
+/* No revamp outline/shadow around the sidebar, it shows as a line above tst */
 
-#sidebar,
-.browserContainer {
-  border-radius: 0 !important;
+#sidebar {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /* Use toolbar color instead of gtk sidebar color, which is too dark on light themes */
@@ -36,10 +36,10 @@
   padding: 0 !important;
 }
 
-/* Narrower tst sidebar, firefox's own minimum is 14em; no width here so the splitter's inline width can resize it */
+/* Tst sidebar can shrink to just favicons, firefox's own minimum is 14em; no width here so the splitter's inline width can resize it */
 
 #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
-  min-width: 120px !important;
+  min-width: 32px !important;
 }
 
 /* 1px resize line with a 7px grab area, negative margins keep the extra width off the layout */
@@ -52,29 +52,6 @@
   margin-block-end: 0 !important;
   position: relative;
   z-index: 1;
-}
-
-/* Square toolbar buttons, urlbar and popups */
-
-:root {
-  --toolbarbutton-border-radius: 0 !important;
-}
-
-.urlbar {
-  --urlbar-border-radius: 0 !important;
-  --urlbarview-border-radius: 0 !important;
-  --urlbar-background-overhang-open: 0px !important;
-}
-
-menupopup,
-panel {
-  --panel-border-radius: 0 !important;
-}
-
-menu,
-menuitem,
-menucaption {
-  border-radius: 0 !important;
 }
 
 /* Hide nav buttons, urlbar extras and the context menu's icon row */
@@ -94,85 +71,15 @@ menucaption {
   display: none !important;
 }
 
-/* Slim nav-bar */
+/* No line between toolbox and content */
 
 #navigator-toolbox {
   border: none !important;
 }
 
-#nav-bar {
-  --urlbar-height: 22px !important;
-  --urlbar-container-padding-block: 0px !important;
-  height: 28px !important;
-}
+/* No slide animation on the bookmarks bar, with "only show on new tab" the content area sometimes keeps its old
+   size after it slides in and the page ends up under it */
 
-/* Urlbar as a flat field, tst.css's --bar color slightly tinted so its edge is clear from the draggable nav-bar */
-
-.urlbar:not([open]) > .urlbar-background {
-  background: color-mix(in srgb, -moz-dialogtext 6%, light-dark(white, color-mix(in srgb, -moz-dialog 85%, white))) !important;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* Square, slim findbar */
-
-findbar {
-  --findbar-container-height: 22px !important;
-  --findbar-padding-block: 0px !important;
-}
-
-.findbar-textbox,
-.findbar-find-previous,
-.findbar-find-next,
-.findbar-closebutton {
-  border-radius: 0 !important;
-  box-shadow: none !important;
-}
-
-/* Square, slim notification bars, the vars reach into their shadow dom */
-
-notification-message {
-  --message-bar-border-radius: 0 !important;
-  --message-bar-container-min-height: 0 !important;
-  --message-bar-container-padding-block: 1px !important;
-  --button-border-radius: 0 !important;
-}
-
-/* Monospace everywhere, smaller menus */
-
-* {
-  font-family: monospace !important;
-  font-size: 14px !important;
-}
-
-/* Extension badges have to fit on top of their icons */
-
-.toolbarbutton-badge {
-  font-size: 10px !important;
-}
-
-/* No fade on long urls */
-
-.urlbar-input {
-  mask-image: none !important;
-}
-
-menupopup,
-panel,
-menu,
-menuitem {
-  --panel-padding-block: 0px !important;
-  --menuitem-padding-block: 1px !important;
-  --menuitem-padding-inline: 4px !important;
-}
-
-.panel-subview-body {
-  padding: 0 !important;
-}
-
-.subviewbutton,
-.subview-subheader {
-  padding: 1px 4px !important;
-  margin: 0 !important;
+#PersonalToolbar {
+  transition: none !important;
 }

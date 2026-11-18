@@ -8,6 +8,15 @@ src=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 # scroll distance per wheel step, smoothfox's natural scrolling uses 300 (suggests 250-400)
 scroll_multiplier=200
 
+# extensions to sideload, "amo-slug extension-id" per line, add more here
+extensions='tree-style-tab treestyletab@piro.sakura.ne.jp
+bitwarden-password-manager {446900e4-71c2-419f-a6a7-df9c091e268b}
+floccus floccus@handmadeideas.org
+ublock-origin uBlock0@raymondhill.net
+sponsorblock sponsorBlocker@ajay.app
+violentmonkey {aecec67f-0d10-4fa7-b7c7-609a2db280cf}
+istilldontcareaboutcookies idcac-pub@guus.ninja'
+
 # every profile listed in a normal, flatpak or macos firefox's profiles.ini
 list_profiles() {
   local root path
@@ -66,6 +75,13 @@ awk '/OPTION: NATURAL SMOOTH SCROLLING/ { on = 1; next } on && /^\/\*{4}/ { exit
   "$tmp/Smoothfox.js" > "$tmp/smooth.js"
 [[ -s $tmp/smooth.js ]] || { echo "natural smooth scrolling section not found in Smoothfox.js" >&2; exit 1; }
 
+# firefox picks up signed xpis named after the extension id from here, autoDisableScopes below makes them enable themselves
+mkdir -p "$profile/extensions"
+while read -r slug id; do
+  curl -fsSL -o "$profile/extensions/$id.xpi" "https://addons.mozilla.org/firefox/downloads/latest/$slug/latest.xpi" \
+    || { echo "could not download extension $slug" >&2; exit 1; }
+done <<< "$extensions"
+
 js=$profile/user.js
 [[ -f $js && ! -f $js.bak ]] && cp "$js" "$js.bak"
 { cat "$tmp/user.js"; echo; echo "// smoothfox: natural smooth scrolling"; cat "$tmp/smooth.js"; echo; echo "// theme"; } > "$js"
@@ -75,6 +91,7 @@ while read -r name value; do
   mv "$js.tmp" "$js"
 done <<EOF
 toolkit.legacyUserProfileCustomizations.stylesheets true
+extensions.autoDisableScopes 0
 browser.nova.enabled false
 browser.compactmode.show true
 browser.uidensity 1
@@ -85,7 +102,7 @@ EOF
 cat <<EOF
 
 done, restart firefox to load it.
-tree style tab can't be set up from here, set these in its options page:
+tree style tab is installed, but its settings can't be set from here, set these in its options page:
   advanced > user style sheet > load from file > $profile/chrome/tst.css
   tick "Unlock Expert Options" at the top, most tree behavior ones below are hidden without it
   appearance > theme: Photon

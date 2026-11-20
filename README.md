@@ -8,6 +8,8 @@ Firefox with Tree Style Tab (TST) in the sidebar instead of horizontal tabs.
 
 Without a profile it updates an existing install (the one with `chrome/tst.css`) or asks which profile.
 Needs `curl`, `jq`, and `sudo` for `policies.json`. Restart Firefox afterwards.
+On Windows run `install.ps1 [-ProfileDir <dir>]` instead, from PowerShell as administrator:
+`powershell -ExecutionPolicy Bypass -File install.ps1`.
 
 ## What goes where
 
@@ -17,7 +19,7 @@ Needs `curl`, `jq`, and `sudo` for `policies.json`. Restart Firefox afterwards.
 | `userContent.css` | `<profile>/chrome/` | firefox loads it for web and about: pages |
 | `tst.css` | `<profile>/chrome/` and `policies.json` | firefox can't load css into extension pages, TST takes it from its policy settings; the profile copy only marks an existing install |
 | `user-overrides.js`, `layout.json`, on kde `user-overrides-kde.js` | `<profile>/user.js` | appended to Betterfox and Smoothfox scrolling, firefox applies `user.js` on every start; the layout becomes `browser.uiCustomization.state` |
-| `policies.json`, on kde `policies-kde.json` | `/etc/firefox/policies/` (linux), `Firefox.app/Contents/Resources/distribution/` (macos), the flatpak `systemconfig` extension | policies are per install not per profile; they install extensions and hand settings to them; `tst.css` is added to TST's settings on install |
+| `policies.json`, on kde `policies-kde.json` | `/etc/firefox/policies/` (linux), `Firefox.app/Contents/Resources/distribution/` (macos), `C:\Program Files\Mozilla Firefox\distribution\` (windows), the flatpak `systemconfig` extension | policies are per install not per profile; they install extensions and hand settings to them; `tst.css` is added to TST's settings on install |
 
 Existing files get a `.bak` copy once, so reruns never overwrite the original. `user.js` is rebuilt every run to
 pick up the latest Betterfox. An existing `policies.json` is merged with `jq`: each policy written here replaces
